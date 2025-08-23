@@ -1,5 +1,5 @@
 // Making the file a module so names won’t leak
-export {};
+export {}
 
 /**
  * LEGEND:
@@ -7,8 +7,8 @@ export {};
  * ❌ Error
  */
 
-let value: any = "hello";
+let value: any = 'hello'
 
-value.trim();      // ✅ allowed
-value();           // ✅ allowed, even if it's not a function
-let num: number = value; // ✅ allowed, no checks
+value.trim() // ✅ allowed
+value() // ✅ allowed, even if it's not a function
+let num: number = value // ✅ allowed, no checks
