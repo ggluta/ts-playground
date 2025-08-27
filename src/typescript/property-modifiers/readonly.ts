@@ -96,3 +96,18 @@ type AnotherMutablePerson = {
   age: number
   hometown: string
 }
+
+type ImmutablePerson = Readonly<AnotherMutablePerson>
+// this is equivalent to, but I will have to pass manually the keys that I want to make immutable
+type ImmutableUtility<T, K extends keyof T> = {
+  readonly [P in K]: T[P]
+}
+// if I want to pass all the keys of the type to make them all immutable, then
+// I can use keyof AnotherMutablePerson to get all the keys of the type
+type ImmutablePerson2 = ImmutableUtility<Person, keyof AnotherMutablePerson>
+
+// another trick would be to define a default set of keys, in case I don't pass any keys
+type ImmutableUtilityWithDefault<T, K extends keyof T = keyof T> = {
+  readonly [P in K]: T[P]
+}
+type ImmutablePerson3 = ImmutableUtilityWithDefault<AnotherMutablePerson>
