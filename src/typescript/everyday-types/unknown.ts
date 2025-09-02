@@ -8,9 +8,12 @@ export {}
  */
 let value: unknown = 'hello'
 
-// value.trim(); // ❌ Error: Object is of type 'unknown'
-// value(); // ❌ Error
-// let num: number = value; // ❌ Error
+// @ts-expect-error
+value.trim() // ❌ Error: Object is of type 'unknown'
+// @ts-expect-error
+value() // ❌ Error
+// @ts-expect-error
+let num: number = value // ❌ Error
 
 if (typeof value === 'string') {
   value.trim() // ✅ OK now

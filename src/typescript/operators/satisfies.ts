@@ -41,7 +41,8 @@ randomAnimal.hasTail = true // ✅ Allowed - randomAnimal is mutable and has no 
 
 // Still mutable, but with a twist
 // satisfies preserves the precise (literal) inference of the value it checks.
-// rabbitTraits.hasTail = true // ❌ Error - rabbitTraits is readonly because of 'satisfies'
+// @ts-expect-error
+rabbitTraits.hasTail = true // ❌ Error - rabbitTraits is readonly because of 'satisfies'
 type CatTraits = keyof typeof catTraits // "hasFur" | "hasTail" // ✅ precise inference
 
 // ====================================================
